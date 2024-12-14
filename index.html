@@ -8,23 +8,27 @@
   <title>Document</title>
 </head>
 <body>  
-  <button class="btn" style="display: block;">Add book</button>
+  <button class="btn" style="display: block;">New book</button>
   <form action="" class="form">
     <div class="form__name container">
       <label for="" class="form__name-label label">Name</label>
-      <input type="text" class="form__name-input" placeholder="Escribe aquí...">
+      <input type="text" class="form__name-input" placeholder="Escribe aquí..." required>
     </div>
     <div class="form__author container">
       <label for="" class="form__author-label label">Author</label>
-      <input type="text" class="form__author-input" placeholder="Escribe aquí...">
+      <input type="text" class="form__author-input" placeholder="Escribe aquí..." required>
     </div>
     <div class="form__pages container">
       <label for="" class="form__pages-label label">Pages</label>
-      <input type="text" class="form__pages-input" placeholder="Escribe aquí...">
+      <input type="text" class="form__pages-input" placeholder="Escribe aquí..." required>
     </div>
     <button class="form__btn">
-      Submit
+      Save
     </button>
   </form>
+  <div class="section">
+    <div class="book__card">
+    </div>
+  </div>
 </body>
 </html>

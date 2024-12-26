@@ -1,3 +1,4 @@
+//Apuntando a todos los elementos que voy a necesitar
 const btn = document.querySelector('.btn')
 const formulario = document.querySelector('.form');
 const nameInput = document.querySelector('.form__name-input');
@@ -5,6 +6,7 @@ const pagesInput = document.querySelector('.form__pages-input');
 const authorInput = document.querySelector('.form__author-input');
 const formBtn = document.querySelector('.form__btn');
 const bookCard = document.querySelector('.book__card');
+const checkbox = document.getElementById('checkbox');
 
 // const myLibrary = [];
 
@@ -65,22 +67,26 @@ formulario.addEventListener('submit', function(event) {
 
   const lastBook = myLibrary.getLastBook();
 
+  //Creando todos los elementos necesarios para mostrar la informacion de los libros.
   const div = document.createElement('div');
-  const title = document.createElement('h3');
-  const author = document.createElement('h5');
-  const pages = document.createElement('h5');
+  const title = document.createElement('p');
+  const author = document.createElement('p');
+  const pages = document.createElement('p');
+  const isRead = document.createElement('p');
   const removeBtn = document.createElement('button');
 
   div.classList.add('card');
   removeBtn.classList.add('btn');
 
-  title.textContent = `Title: ${lastBook.name}`;
-  author.textContent = `Author: ${lastBook.author}`;
-  pages.textContent = `Pages: ${lastBook.pages}`;
+  title.innerHTML = `Title:<br> <strong>${lastBook.name}</strong>`;
+  author.innerHTML = `Author:<br> <strong>${lastBook.author}</strong>`;
+  pages.innerHTML = `Pages:<br> <strong>${lastBook.pages}</strong>`;
+  isRead.innerHTML = `Is read:<br> <strong>${ checkbox.checked? 'Yes' : 'Not yet'}<strong>`
   removeBtn.textContent = 'Remove';
+  console.log(checkbox.value)
 
 
-  div.append(title, author, pages, removeBtn);
+  div.append(title, author, pages, isRead, removeBtn);
   bookCard.append(div);
   
   removeBtn.addEventListener('click', function(event) {

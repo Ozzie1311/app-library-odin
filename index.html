@@ -9,7 +9,7 @@
 </head>
 <body>  
   <div class="section-form">
-    <button class="btn" style="display: block;">Add book</button>
+    <button class="btn btn-add" style="display: block;">Add book</button>
     <form action="" class="form">
       <div class="form__name container">
         <label for="" class="form__name-label label">Name</label>
@@ -22,6 +22,10 @@
       <div class="form__pages container">
         <label for="" class="form__pages-label label">Pages</label>
         <input type="text" class="form__pages-input" placeholder="Escribe aquí..." required>
+      </div>
+      <div class="form__check-read">
+        <label for="checkbox" class="form__pages-label label">Is already read?</label>
+        <input type="checkbox"  id="checkbox">
       </div>
       <button class="form__btn">
         Save

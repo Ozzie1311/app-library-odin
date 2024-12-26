@@ -6,34 +6,64 @@ const authorInput = document.querySelector('.form__author-input');
 const formBtn = document.querySelector('.form__btn');
 const bookCard = document.querySelector('.book__card');
 
-const myLibrary = [];
+// const myLibrary = [];
 
-function Book(name, pages, author) {
-  return {
-    name: name,
-    pages: pages,
-    author: author
-  };
+// function Book(name, pages, author) {
+//   return {
+//     name: name,
+//     pages: pages,
+//     author: author
+//   };
+// };
+
+class Book {
+  constructor(name, pages, author) {
+    this.name = name;
+    this.pages = pages;
+    this.author = author;
+  }
+}
+
+class Library {
+  constructor() {
+    this.books = [];
+  }
+
+  addBookToLibrary(book) {
+    this.books.push(book)
+  }
+
+  removeBook(index) {
+    this.books.splice(index, 1);
+  }
+
+  getLastBook() {
+    return this.books[this.books.length - 1];
+  }
 };
 
-function addBookToLibrary(name, pages, author) {
-   myLibrary.push(Book(name, pages, author));
-}
+const myLibrary = new Library();
 
-function removeBook(book) {
-  console.log(book);
-}
+
+// function addBookToLibrary(name, pages, author) {
+//    myLibrary.push(Book(name, pages, author));
+// }
+
+// function removeBook(book) {
+//   console.log(book);
+// }
 
 formulario.addEventListener('submit', function(event) {
   event.preventDefault();
-  Book(nameInput.value, pagesInput.value, authorInput.value);
-  
-  addBookToLibrary(nameInput.value, pagesInput.value, authorInput.value);
+  // Book(nameInput.value, pagesInput.value, authorInput.value);
+  // addBookToLibrary(nameInput.value, pagesInput.value, authorInput.value);
+  const libro = new Book(nameInput.value, pagesInput.value, authorInput.value);
+  myLibrary.addBookToLibrary(libro);
   nameInput.value = '';
   pagesInput.value = '';
   authorInput.value = '';
 
-  const lastBook = myLibrary[myLibrary.length - 1];
+  const lastBook = myLibrary.getLastBook();
 
   const div = document.createElement('div');
   const title = document.createElement('h3');
@@ -55,8 +85,9 @@ formulario.addEventListener('submit', function(event) {
   
   removeBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    const parent = event.target.parentNode;
-    parent.remove();
+    const parentIndex = Array.from(bookCard.children).indexOf(div);
+    myLibrary.removeBook(parentIndex);
+    div.remove();
    });
   });
 
